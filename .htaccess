@@ -1,0 +1,30 @@
+Options -Indexes
+RewriteEngine On
+
+# ── SESUAIKAN RewriteBase dengan nama folder Anda di htdocs ──
+# Contoh folder "bem"      -> RewriteBase /bem/
+# Jika langsung di htdocs  -> RewriteBase /
+RewriteBase /bem/
+
+# ── Blokir akses LANGSUNG ke folder sensitif ─────────────────
+# (akses via /file/... tetap bisa karena melewati index.php)
+RewriteRule ^config(/.*)?$    - [F,L]
+RewriteRule ^app(/.*)?$       - [F,L]
+RewriteRule ^helpers(/.*)?$   - [F,L]
+RewriteRule ^routes(/.*)?$    - [F,L]
+
+# Blokir akses langsung ke storage (harus lewat /file/ di PHP)
+# CATATAN: Hanya blokir jika REQUEST_URI langsung ke /storage/
+# bukan ketika sudah direwrite oleh index.php
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteRule ^storage(/.*)?$   - [F,L]
+
+# ── Izinkan file statis yang benar-benar ada ─────────────────
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# ── Semua request lain -> index.php ──────────────────────────
+RewriteRule ^(.*)$ index.php/$1 [QSA,L]

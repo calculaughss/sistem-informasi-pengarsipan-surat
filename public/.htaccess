@@ -1,0 +1,11 @@
+Options -Indexes
+
+# Aset statis (CSS, JS, gambar) langsung dilayani tanpa PHP
+<FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf)$">
+    Header set Cache-Control "public, max-age=86400"
+</FilesMatch>
+
+# Blokir akses langsung ke index.php di sini
+<Files "index.php">
+    Deny from all
+</Files>

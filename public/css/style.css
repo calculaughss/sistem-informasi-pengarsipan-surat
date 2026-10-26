@@ -1,0 +1,75 @@
+/* ── Layout ──────────────────────────────────────────────── */
+body { background: #f4f6fb; font-size: 14px; }
+
+.wrapper { min-height: 100vh; }
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    transition: transform .25s ease;
+    z-index: 1000;
+}
+.sidebar .nav-link { border-radius: 8px; padding: 8px 12px; font-size: 13.5px; }
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover { background: rgba(255,255,255,.18); }
+
+/* Main content */
+.main-content { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.page-content  { flex: 1; padding: 24px; }
+
+/* Mobile sidebar */
+@media (max-width: 991px) {
+    .sidebar { position: fixed; left: 0; top: 0; transform: translateX(-100%); }
+    .sidebar.show { transform: translateX(0); }
+}
+
+/* ── Cards ───────────────────────────────────────────────── */
+.card { border: none; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,.07); }
+.card-header { background: transparent; border-bottom: 1px solid #e9ecef; font-weight: 600; }
+
+/* Stat cards */
+.stat-card { border-radius: 14px; border: none; overflow: hidden; }
+.stat-card .icon-box {
+    width: 52px; height: 52px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+}
+
+/* ── Tables ──────────────────────────────────────────────── */
+.table thead th { background: #f8f9fa; font-weight: 600; font-size: 13px; border-bottom: 2px solid #dee2e6; }
+.table tbody tr:hover { background: #f0f4ff; }
+.dataTables_wrapper .dataTables_filter input { border-radius: 8px; border: 1px solid #dee2e6; padding: 4px 10px; }
+.dataTables_wrapper .dataTables_length select { border-radius: 8px; }
+
+/* ── Badges ──────────────────────────────────────────────── */
+.badge { font-size: 11px; font-weight: 500; padding: 4px 8px; border-radius: 6px; }
+
+/* ── Forms ───────────────────────────────────────────────── */
+.form-control, .form-select { border-radius: 8px; font-size: 13.5px; }
+.form-control:focus, .form-select:focus { border-color: #0d6efd; box-shadow: 0 0 0 3px rgba(13,110,253,.12); }
+.form-label { font-weight: 500; font-size: 13px; margin-bottom: 4px; }
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn { border-radius: 8px; font-size: 13.5px; }
+.btn-sm { font-size: 12px; }
+
+/* ── Alerts ──────────────────────────────────────────────── */
+.alert { border-radius: 10px; border: none; font-size: 13.5px; }
+
+/* ── Login page ──────────────────────────────────────────── */
+.login-wrapper {
+    min-height: 100vh; background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+.login-card { width: 100%; max-width: 420px; border-radius: 16px; }
+
+/* ── Pagination ──────────────────────────────────────────── */
+.pagination .page-link { border-radius: 8px !important; margin: 0 2px; font-size: 13px; }
+
+/* ── File badge ──────────────────────────────────────────── */
+.file-badge { font-size: 11px; background: #e9f0ff; color: #0d47a1; border-radius: 6px; padding: 3px 8px; }

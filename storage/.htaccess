@@ -1,0 +1,8 @@
+# Blokir semua akses langsung ke folder storage via browser
+# File hanya boleh diakses melalui index.php/file/...
+Options -Indexes
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{ENV:REDIRECT_STATUS} ^$
+    RewriteRule ^ - [F,L]
+</IfModule>
